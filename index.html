@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STUDIO S LAB · 1ra Copa Fins Valle</title>
+<meta name="description" content="Fotos oficiales de la 1ra Copa Fins Valle de natación por STUDIO S LAB. Busca por jornada o código, elige tus fotos y solicítalas por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          blanco: '#FFFFFF',
+          carbon: '#0C0C0D',
+          lavanda: '#DCCFF5',
+          lavandaOsc: '#B9A5E6',
+          niebla: '#F6F4FB',
+          linea: '#E7E3EF',
+          gris: '#6B6B73'
+        },
+        fontFamily: {
+          sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+          serif: ['"DM Serif Display"', 'Georgia', 'serif']
+        }
+      }
+    }
+  };
+</script>
+<style>
+  html { -webkit-tap-highlight-color: transparent; }
+  body { background: #FFFFFF; color: #0C0C0D; }
+  /* Protección visual de imágenes */
+  .foto-protegida { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none; }
+  .marca-agua { position: absolute; inset: 0; pointer-events: none; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .marca-agua::before {
+    content: "STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA   STUDIO S LAB • MUESTRA";
+    position: absolute; width: 260%; left: -80%; top: -60%; height: 220%;
+    transform: rotate(-28deg);
+    font-family: 'DM Sans', sans-serif; font-weight: 700; letter-spacing: .1em;
+    font-size: 13px; line-height: 2.7; white-space: pre-wrap; word-spacing: .35em;
+    color: rgba(255,255,255,.34); text-shadow: 0 1px 2px rgba(12,12,13,.35);
+  }
+  .marca-agua.grande::before { font-size: 22px; line-height: 2.9; }
+  .marca-agua .sello {
+    position: relative; font-family: 'DM Serif Display', serif; font-size: 15px; letter-spacing: .06em;
+    color: #fff; border: 1.5px solid rgba(255,255,255,.75); padding: 1px 12px; border-radius: 999px;
+    background: rgba(12,12,13,.22);
+  }
+  .marca-agua.grande .sello { font-size: 24px; padding: 3px 18px; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+  .drawer { transition: transform .3s ease; }
+  .fade { transition: opacity .25s ease; }
+  .tarjeta-sel { box-shadow: 0 0 0 3px #0C0C0D, 0 0 0 6px #DCCFF5; }
+  @keyframes pop { 0%{transform:scale(1)} 50%{transform:scale(1.25)} 100%{transform:scale(1)} }
+  .pop { animation: pop .3s ease; }
+</style>
+</head>
+<body class="font-sans min-h-screen antialiased">
+
+<!-- ===================== ENCABEZADO ===================== -->
+<header id="cabecera" class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-linea">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
+    <a href="#" class="flex items-center gap-2.5 mr-auto" aria-label="STUDIO S LAB inicio">
+      <span class="w-10 h-10 rounded-full bg-carbon grid place-items-center font-serif text-lavanda text-2xl leading-none">S</span>
+      <span class="leading-tight">
+        <span id="marcaNombre" class="block font-serif text-2xl tracking-wide">STUDIO S LAB</span>
+        <span id="marcaSub" class="block text-[11px] uppercase tracking-[.22em] text-gris font-semibold">Fotografía Deportiva</span>
+      </span>
+    </a>
+
+    <button id="btnCarritoHeader" class="relative order-2 md:order-3 flex items-center gap-2 bg-carbon text-white rounded-full pl-3 pr-4 py-2 hover:bg-black transition" aria-label="Abrir mi selección">
+      <svg class="w-5 h-5 text-lavanda" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.6.6-.2 1.7.7 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+      <span class="text-left leading-tight">
+        <span class="block text-[11px] text-white/60"><span id="contadorHeader">0</span> fotos</span>
+        <span id="totalHeader" class="block font-bold text-sm">$0</span>
+      </span>
+      <span id="badgeHeader" class="absolute -top-1.5 -right-1.5 min-w-[22px] h-[22px] px-1 rounded-full bg-lavanda text-carbon text-xs font-bold grid place-items-center ring-2 ring-white hidden">0</span>
+    </button>
+
+    <div class="order-3 md:order-2 w-full md:w-80 relative">
+      <svg class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gris" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M21 21l-4.3-4.3M11 18a7 7 0 100-14 7 7 0 000 14z"/></svg>
+      <input id="busqueda" type="search" inputmode="search" autocomplete="off" placeholder="Buscar por código (ej. FINS-001)"
+        class="w-full bg-niebla border border-linea focus:border-carbon focus:ring-0 outline-none rounded-full pl-10 pr-4 py-2.5 text-sm placeholder-gris uppercase">
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 pb-32">
+
+  <!-- ===================== EVENTO / TARIFAS ===================== -->
+  <section class="pt-7 pb-5">
+    <span class="inline-flex items-center gap-1.5 bg-lavanda text-carbon text-xs font-semibold rounded-full px-3 py-1">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" d="M2 18c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 13c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/></svg>
+      <span id="etiquetaDeporte">Natación</span>
+    </span>
+    <h1 id="tituloEvento" class="font-serif text-4xl md:text-6xl leading-[1.05] mt-3">1ra Copa Fins Valle</h1>
+    <p class="text-gris mt-2 text-sm md:text-base max-w-2xl">Encuentra tus fotos por jornada o por código, selecciónalas y solicítalas por WhatsApp. Tras confirmar el pago recibes los archivos en alta resolución y sin marca de agua.</p>
+    <div id="tarifas" class="mt-5 grid grid-cols-3 gap-2 md:gap-3 max-w-2xl"></div>
+  </section>
+
+  <!-- ===================== FILTROS POR JORNADA ===================== -->
+  <section id="barraFiltros" class="sticky z-20 bg-white/95 backdrop-blur py-3 -mx-4 px-4 border-b border-linea">
+    <div class="flex gap-2 overflow-x-auto no-scrollbar" id="filtroJornada" role="tablist" aria-label="Filtrar por jornada"></div>
+  </section>
+
+  <div class="flex items-center justify-between mt-4 mb-3">
+    <p id="resultados" class="text-sm text-gris"></p>
+    <button id="limpiarFiltros" class="text-xs font-semibold text-carbon underline underline-offset-4 decoration-lavandaOsc hidden">Limpiar filtros</button>
+  </div>
+
+  <!-- Aviso de modo vista previa (solo visible si modoVistaPrevia = true) -->
+  <div id="avisoPrevia" class="hidden mb-4 rounded-2xl border border-lavandaOsc bg-lavanda/40 px-4 py-3 text-sm">
+    <b>Vista previa:</b> estas son fotos de ejemplo. Muy pronto publicaremos aquí las fotos oficiales del evento.
+  </div>
+
+  <!-- ===================== GALERÍA ===================== -->
+  <section id="galeria" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5"></section>
+  <div class="text-center mt-6">
+    <button id="verMas" class="hidden rounded-full border border-carbon px-6 py-2.5 text-sm font-semibold hover:bg-carbon hover:text-white transition"></button>
+  </div>
+  <div id="vacio" class="hidden text-center py-16 text-gris">
+    <p class="font-serif text-3xl text-carbon">Sin resultados</p>
+    <p class="text-sm mt-1">Revisa el código o cambia de jornada.</p>
+  </div>
+</main>
+
+<footer class="border-t border-linea py-6 text-center text-xs text-gris">
+  <span id="pieMarca">STUDIO S LAB</span> · Fotografía Deportiva · Fotos de muestra con marca de agua
+</footer>
+
+<!-- Barra inferior móvil -->
+<div id="barraMovil" class="md:hidden fixed bottom-0 inset-x-0 z-30 p-3 bg-white/95 border-t border-linea backdrop-blur translate-y-full transition-transform">
+  <button id="btnCarritoMovil" class="w-full flex items-center justify-between bg-carbon text-white font-bold rounded-full px-5 py-3.5">
+    <span><span id="contadorMovil">0</span> fotos <span id="dctoMovil" class="hidden ml-1 bg-lavanda text-carbon text-[10px] rounded-full px-2 py-0.5 align-middle">−20%</span></span>
+    <span class="flex items-center gap-1"><span id="totalMovil">$0</span> →</span>
+  </button>
+</div>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div id="lightbox" class="fixed inset-0 z-50 bg-carbon/95 hidden fade opacity-0" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+  <button id="lbCerrar" class="absolute top-3 right-3 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white grid place-items-center text-2xl" aria-label="Cerrar">×</button>
+  <button id="lbPrev" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white grid place-items-center text-2xl" aria-label="Anterior">‹</button>
+  <button id="lbNext" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white grid place-items-center text-2xl" aria-label="Siguiente">›</button>
+  <div class="h-full flex flex-col items-center justify-center p-4 gap-4">
+    <div class="relative inline-block">
+      <img id="lbImg" class="foto-protegida max-h-[72vh] w-auto max-w-full rounded-xl object-contain" alt="" draggable="false">
+      <div class="marca-agua grande"><span class="sello">Muestra</span></div>
+    </div>
+    <div class="flex flex-wrap items-center justify-center gap-3 text-center text-white">
+      <span id="lbCodigo" class="font-serif text-3xl"></span>
+      <span id="lbInfo" class="text-sm text-white/60"></span>
+      <button id="lbSel" class="rounded-full px-5 py-2.5 font-bold text-sm transition"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CARRITO (DRAWER) ===================== -->
+<div id="overlay" class="fixed inset-0 z-40 bg-carbon/50 hidden fade opacity-0"></div>
+<aside id="drawer" class="drawer fixed top-0 right-0 z-50 h-full w-full sm:w-[420px] bg-white border-l border-linea translate-x-full flex flex-col" aria-label="Mi selección">
+  <div class="flex items-center justify-between px-5 py-4 border-b border-linea">
+    <div>
+      <h2 class="font-serif text-3xl">Mi selección</h2>
+      <p class="text-xs text-gris"><span id="contadorDrawer">0</span> fotos · <span id="eventoDrawer"></span></p>
+    </div>
+    <button id="cerrarDrawer" class="w-10 h-10 rounded-full hover:bg-niebla text-2xl" aria-label="Cerrar">×</button>
+  </div>
+
+  <div class="flex-1 overflow-y-auto px-5 py-4">
+    <ul id="listaCarrito" class="space-y-2"></ul>
+    <div id="carritoVacio" class="text-center py-10 text-gris text-sm">Aún no has seleccionado fotos.</div>
+
+    <div id="bloqueResumen" class="hidden">
+      <div id="sugerencia" class="hidden mt-4 rounded-2xl bg-lavanda/60 p-3 text-sm"></div>
+
+      <div class="mt-4 rounded-2xl bg-niebla border border-linea p-4 text-sm space-y-1.5">
+        <div class="flex justify-between text-gris"><span id="rDetalle"></span><span id="rSubtotal"></span></div>
+        <div id="filaDescuento" class="flex justify-between font-semibold"><span id="rDescLabel"></span><span id="rAhorro"></span></div>
+        <div class="flex justify-between items-baseline pt-2 border-t border-linea mt-2"><span class="font-bold text-base">Total</span><span id="rTotal" class="font-serif text-3xl"></span></div>
+      </div>
+
+      <form id="formPedido" class="mt-5 space-y-3" novalidate>
+        <div>
+          <label for="nombre" class="block text-xs font-semibold mb-1">Nombre del Atleta / Acudiente *</label>
+          <input id="nombre" required maxlength="80" class="w-full bg-white border border-linea rounded-xl px-3 py-2.5 text-sm focus:border-carbon outline-none" placeholder="Ej. María Gómez (mamá de Sofía)">
+          <p class="err hidden text-xs text-red-600 mt-1">Este campo es obligatorio.</p>
+        </div>
+        <div>
+          <label for="club" class="block text-xs font-semibold mb-1">Club / Equipo *</label>
+          <input id="club" required maxlength="80" class="w-full bg-white border border-linea rounded-xl px-3 py-2.5 text-sm focus:border-carbon outline-none" placeholder="Ej. Club Deportivo Corales">
+          <p class="err hidden text-xs text-red-600 mt-1">Este campo es obligatorio.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="px-5 py-4 border-t border-linea space-y-2">
+    <a id="btnWhatsApp" href="#" target="_blank" rel="noopener"
+       class="flex items-center justify-center gap-2 w-full rounded-full py-3.5 font-bold text-white bg-carbon hover:bg-black transition">
+      <svg class="w-5 h-5 text-lavanda" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1112 21.8zm0-21.6A11.8 11.8 0 001.9 18l-1.7 6 6.2-1.6A11.8 11.8 0 1012 .2z"/></svg>
+      Solicitar fotos por WhatsApp
+    </a>
+    <p id="avisoWa" class="text-[11px] text-gris text-center"></p>
+    <button id="vaciar" class="w-full text-xs text-gris hover:text-red-600 py-1">Vaciar selección</button>
+  </div>
+</aside>
+
+<!-- Toast -->
+<div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-24 md:bottom-6 z-[60] bg-carbon text-white text-sm font-semibold rounded-full px-4 py-2 shadow-lg opacity-0 pointer-events-none fade"></div>
+
+<script>
+/* =====================================================================
+   CONFIGURACION_FINS_VALLE
+   ---------------------------------------------------------------------
+   Todo lo editable está aquí. No es necesario tocar el resto del código.
+   ===================================================================== */
+const CONFIGURACION_FINS_VALLE = {
+  marca: { nombre: 'STUDIO S LAB', subtitulo: 'Fotografía Deportiva' },
+  evento: { nombre: '1ra Copa Fins Valle', deporte: 'Natación' },
+
+  // WhatsApp: código de país + número, SIN "+", espacios ni guiones.
+  whatsapp: '573000000000',
+
+  // Medios de pago mencionados en el mensaje de WhatsApp.
+  pagos: { nequi: '300 000 0000', llave: '@studioslab', titular: 'STUDIO S LAB' },
+
+  // Precios en pesos colombianos (COP).
+  precioBase: 3000,          // Precio por foto
+  umbralFotos: 3,            // El descuento aplica cuando se lleva MÁS de este número de fotos
+  porcentajeDescuento: 0.20, // 0.20 = 20% sobre el total de la compra
+
+  // ------------------------------------------------------------------
+  // MODO VISTA PREVIA
+  //   true  → muestra fotos de ejemplo (para que la web se vea llena hoy).
+  //   false → muestra TUS fotos de Cloudinary según las jornadas de abajo.
+  // ------------------------------------------------------------------
+  modoVistaPrevia: true,
+
+  // ------------------------------------------------------------------
+  // CLOUDINARY
+  //   La URL de cada foto se arma sola así:
+  //   https://res.cloudinary.com/{cloudName}/image/upload/{transformacion}/{ruta}.{extension}
+  //   "ruta" sale de "plantillaRuta":
+  //     {carpeta}    → carpeta base (abajo)
+  //     {subcarpeta} → subcarpeta de cada jornada
+  //     {codigo}     → código de la foto (FINS-001)
+  //   Si en Cloudinary el "Public ID" de tus fotos es solo "FINS-001",
+  //   cambia plantillaRuta a '{codigo}'.
+  // ------------------------------------------------------------------
+  cloudinary: {
+    cloudName: 'tu-cuenta',
+    carpeta: 'copa-fins-valle',
+    plantillaRuta: '{carpeta}/{subcarpeta}/{codigo}',
+    transformacion: 'c_limit,w_900,q_auto,f_auto',
+    extension: 'jpg'
+  },
+
+  // ------------------------------------------------------------------
+  // JORNADAS Y FOTOS (se usan cuando modoVistaPrevia = false)
+  //   En cada jornada usa UNA de estas dos opciones:
+  //     codigos: ['FINS-001', 'FINS-002', 'FINS-003']
+  //     rango:   { desde: 1, hasta: 50 }   → genera FINS-001 … FINS-050
+  //   Puedes usar ambas a la vez; los códigos repetidos se ignoran.
+  // ------------------------------------------------------------------
+  prefijoCodigo: 'FINS-',  // Prefijo de los códigos generados por rango
+  digitosCodigo: 3,        // 3 → FINS-001 · 4 → FINS-0001
+
+  jornadas: [
+    { nombre: 'Jornada 1 - Sábado AM',  subcarpeta: 'jornada-1', rango: { desde: 1,   hasta: 50 } },
+    { nombre: 'Jornada 2 - Sábado PM',  subcarpeta: 'jornada-2', rango: { desde: 51,  hasta: 100 } },
+    { nombre: 'Jornada 3 - Domingo AM', subcarpeta: 'jornada-3', codigos: ['FINS-101', 'FINS-102', 'FINS-103'] }
+  ],
+
+  // (Opcional) Texto bajo la foto: prueba, categoría o serie.
+  detalles: {
+    // 'FINS-001': '50 m Libre · Infantil A',
+  },
+
+  fotosPorPagina: 24,  // Cuántas fotos se muestran antes del botón "Ver más"
+
+  // ------------------------------------------------------------------
+  // FOTOS DE EJEMPLO (solo se usan cuando modoVistaPrevia = true)
+  // ------------------------------------------------------------------
+  fotosEjemplo: [
+    { codigo: 'FINS-001', jornada: 'Jornada 1 - Sábado AM',  prueba: '50 m Libre · Infantil A',    url: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-002', jornada: 'Jornada 1 - Sábado AM',  prueba: '100 m Pecho · Juvenil',      url: 'https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-003', jornada: 'Jornada 1 - Sábado AM',  prueba: '50 m Mariposa · Infantil B', url: 'https://images.unsplash.com/photo-1560090995-01632a28895b?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-004', jornada: 'Jornada 2 - Sábado PM',  prueba: '200 m Combinado · Juvenil',  url: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-005', jornada: 'Jornada 2 - Sábado PM',  prueba: '100 m Espalda · Infantil A', url: 'https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-006', jornada: 'Jornada 2 - Sábado PM',  prueba: 'Relevo 4×50 Libre · Mixto',  url: 'https://images.unsplash.com/photo-1438029071396-1e831a7fa6d8?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-007', jornada: 'Jornada 3 - Domingo AM', prueba: '400 m Libre · Juvenil',      url: 'https://images.unsplash.com/photo-1622629797619-c100e3e67e2e?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-008', jornada: 'Jornada 3 - Domingo AM', prueba: '50 m Pecho · Infantil B',    url: 'https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-009', jornada: 'Jornada 3 - Domingo AM', prueba: 'Premiación · Infantil A',    url: 'https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=900&q=70' }
+  ]
+};
+/* ======================= FIN DE CONFIGURACION ======================= */
+
+
+(() => {
+  const C = CONFIGURACION_FINS_VALLE;
+  const $ = (id) => document.getElementById(id);
+  const cop = (n) => '$' + Math.round(n).toLocaleString('es-CO');
+  const pct = Math.round(C.porcentajeDescuento * 100);
+  const minDcto = C.umbralFotos + 1;
+  const TODAS = 'Todas las jornadas';
+  const JORNADAS = C.jornadas.map(j => j.nombre);
+
+  /* ---------- Construcción automática del catálogo ---------- */
+  const formatearCodigo = (n) => C.prefijoCodigo + String(n).padStart(C.digitosCodigo, '0');
+  function urlCloudinary(codigo, subcarpeta) {
+    const cl = C.cloudinary;
+    const ruta = cl.plantillaRuta
+      .replace('{carpeta}', cl.carpeta)
+      .replace('{subcarpeta}', subcarpeta || '')
+      .replace('{codigo}', codigo)
+      .replace(/\/{2,}/g, '/').replace(/^\/|\/$/g, '');
+    const trans = cl.transformacion ? cl.transformacion.replace(/^\/|\/$/g, '') + '/' : '';
+    const ext = cl.extension ? '.' + cl.extension : '';
+    return `https://res.cloudinary.com/${cl.cloudName}/image/upload/${trans}${ruta.split('/').map(encodeURIComponent).join('/')}${ext}`;
+  }
+  function construirCatalogo() {
+    if (C.modoVistaPrevia) return C.fotosEjemplo.slice();
+    const vistos = new Set(), fotos = [];
+    C.jornadas.forEach(j => {
+      const codigos = [...(j.codigos || [])];
+      if (j.rango) for (let n = j.rango.desde; n <= j.rango.hasta; n++) codigos.push(formatearCodigo(n));
+      codigos.forEach(cod => {
+        const codigo = String(cod).trim().toUpperCase();
+        if (!codigo || vistos.has(codigo)) return;
+        vistos.add(codigo);
+        fotos.push({ codigo, jornada: j.nombre, prueba: (C.detalles || {})[codigo] || '', url: urlCloudinary(codigo, j.subcarpeta) });
+      });
+    });
+    return fotos;
+  }
+  const FOTOS = construirCatalogo();
+  const buscarFoto = (c) => FOTOS.find(x => x.codigo === c);
+
+  /* ---------- Estado ---------- */
+  const estado = { jornada: TODAS, busqueda: '', seleccion: [], limite: C.fotosPorPagina };
+  const claveLS = 'ssl_fins_seleccion' + (C.modoVistaPrevia ? '_previa' : '');
+  try {
+    const g = JSON.parse(localStorage.getItem(claveLS) || '[]');
+    if (Array.isArray(g)) estado.seleccion = g.filter(c => buscarFoto(c));
+  } catch (e) {}
+  const guardar = () => { try { localStorage.setItem(claveLS, JSON.stringify(estado.seleccion)); } catch (e) {} };
+
+  /* ---------- Textos de marca/evento ---------- */
+  $('marcaNombre').textContent = C.marca.nombre;
+  $('marcaSub').textContent = C.marca.subtitulo;
+  $('pieMarca').textContent = C.marca.nombre;
+  $('tituloEvento').textContent = C.evento.nombre;
+  $('etiquetaDeporte').textContent = C.evento.deporte;
+  $('eventoDrawer').textContent = C.evento.nombre;
+  $('busqueda').placeholder = `Buscar por código (ej. ${FOTOS[0] ? FOTOS[0].codigo : C.prefijoCodigo + '001'})`;
+  $('avisoPrevia').classList.toggle('hidden', !C.modoVistaPrevia);
+  document.title = `${C.marca.nombre} · ${C.evento.nombre}`;
+
+  /* ---------- Imagen de respaldo (si la URL no carga) ---------- */
+  function respaldo(f) {
+    const n = (JORNADAS.indexOf(f.jornada) + 1) || '';
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCCFF5"/><stop offset="1" stop-color="#8F7BC4"/></linearGradient></defs><rect width="600" height="800" fill="url(#g)"/><g fill="none" stroke="#fff" stroke-width="6" opacity=".45"><path d="M0 560c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/><path d="M0 620c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/><path d="M0 680c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/></g><text x="300" y="330" font-family="Georgia,serif" font-size="70" fill="#0C0C0D" text-anchor="middle">${C.evento.deporte}</text><text x="300" y="400" font-family="Arial" font-weight="700" font-size="34" fill="#0C0C0D" text-anchor="middle" opacity=".75">${f.codigo}</text><text x="300" y="450" font-family="Arial" font-size="26" fill="#0C0C0D" text-anchor="middle" opacity=".6">Jornada ${n}</text></svg>`;
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+  function imgConRespaldo(img, f) {
+    img.onerror = () => { img.onerror = null; img.src = respaldo(f); };
+    img.src = f.url;
+  }
+
+  /* ---------- Precios ---------- */
+  function calcular(n) {
+    const subtotal = n * C.precioBase;
+    const aplica = n > C.umbralFotos;
+    const descuento = aplica ? Math.round(subtotal * C.porcentajeDescuento) : 0;
+    return { n, subtotal, aplica, descuento, total: subtotal - descuento };
+  }
+  function sugerencia(n) {
+    if (n === 0 || n > C.umbralFotos) return '';
+    const faltan = minDcto - n;
+    const futuro = calcular(minDcto);
+    const actual = calcular(n).total;
+    return `Agrega <b>${faltan} foto${faltan > 1 ? 's' : ''} más</b> y obtén <b>${pct}% de descuento</b>: ${minDcto} fotos por <b>${cop(futuro.total)}</b> (solo ${cop(futuro.total - actual)} adicionales).`;
+  }
+
+  /* ---------- Banner de tarifas ---------- */
+  const ej = calcular(minDcto);
+  $('tarifas').innerHTML = `
+    <div class="rounded-2xl border border-linea bg-white p-3">
+      <p class="text-[11px] uppercase tracking-wider text-gris">Precio por foto</p>
+      <p class="font-serif text-2xl md:text-3xl leading-tight">${cop(C.precioBase)}</p>
+      <p class="text-[10px] md:text-xs text-gris">De 1 a ${C.umbralFotos} fotos</p>
+    </div>
+    <div class="rounded-2xl bg-lavanda p-3">
+      <p class="text-[11px] uppercase tracking-wider text-carbon/70">Desde ${minDcto} fotos</p>
+      <p class="font-serif text-2xl md:text-3xl leading-tight">−${pct}%</p>
+      <p class="text-[10px] md:text-xs text-carbon/70">Sobre el total de la compra</p>
+    </div>
+    <div class="rounded-2xl bg-carbon text-white p-3">
+      <p class="text-[11px] uppercase tracking-wider text-white/60">Ejemplo ${minDcto} fotos</p>
+      <p class="font-serif text-2xl md:text-3xl leading-tight">${cop(ej.total)}</p>
+      <p class="text-[10px] md:text-xs text-lavanda"><s class="opacity-70">${cop(ej.subtotal)}</s> · ahorras ${cop(ej.descuento)}</p>
+    </div>`;
+
+  /* ---------- Filtro por jornada ---------- */
+  function pintarFiltros() {
+    $('filtroJornada').innerHTML = [TODAS, ...JORNADAS].map(j => {
+      const n = j === TODAS ? FOTOS.length : FOTOS.filter(f => f.jornada === j).length;
+      const act = estado.jornada === j;
+      return `<button role="tab" aria-selected="${act}" data-v="${j}" class="shrink-0 rounded-full px-4 py-2 text-sm font-semibold border transition ${act ? 'bg-carbon border-carbon text-white' : 'bg-white border-linea text-carbon hover:border-carbon'}">${j} <span class="ml-1 text-xs rounded-full px-1.5 py-0.5 ${act ? 'bg-lavanda text-carbon' : 'bg-niebla text-gris'}">${n}</span></button>`;
+    }).join('');
+  }
+  const reiniciarPagina = () => { estado.limite = C.fotosPorPagina; };
+  $('filtroJornada').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    estado.jornada = b.dataset.v; reiniciarPagina(); pintarFiltros(); pintarGaleria();
+  });
+  $('busqueda').addEventListener('input', (e) => { estado.busqueda = e.target.value.trim().toUpperCase(); reiniciarPagina(); pintarGaleria(); });
+  $('limpiarFiltros').addEventListener('click', () => {
+    estado.jornada = TODAS; estado.busqueda = ''; $('busqueda').value = '';
+    reiniciarPagina(); pintarFiltros(); pintarGaleria();
+  });
+  $('verMas').addEventListener('click', () => { estado.limite += C.fotosPorPagina; pintarGaleria(); });
+
+  // La barra de filtros se pega justo debajo del encabezado.
+  const ajustarSticky = () => { $('barraFiltros').style.top = $('cabecera').offsetHeight + 'px'; };
+  window.addEventListener('resize', ajustarSticky);
+
+  /* ---------- Galería ---------- */
+  let visibles = [];
+  const seleccionada = (c) => estado.seleccion.includes(c);
+  const partesJornada = (j) => { const p = j.split(' - '); return [p[0], p[1] || '']; };
+
+  function pintarGaleria() {
+    const q = estado.busqueda.replace(/[\s-]/g, '');
+    visibles = FOTOS.filter(f =>
+      (estado.jornada === TODAS || f.jornada === estado.jornada) &&
+      (!q || f.codigo.replace(/-/g, '').includes(q))
+    );
+    const mostrar = visibles.slice(0, estado.limite);
+    const g = $('galeria'); g.innerHTML = '';
+    mostrar.forEach((f, i) => {
+      const sel = seleccionada(f.codigo);
+      const [jCorta, jDia] = partesJornada(f.jornada);
+      const card = document.createElement('article');
+      card.className = `group relative rounded-2xl overflow-hidden bg-white border border-linea transition ${sel ? 'tarjeta-sel' : 'hover:shadow-lg'}`;
+      card.innerHTML = `
+        <div class="relative aspect-[3/4] overflow-hidden bg-niebla">
+          <img class="foto-protegida w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="Foto ${f.codigo} · ${f.jornada}" loading="lazy" draggable="false">
+          <div class="marca-agua"><span class="sello">Muestra</span></div>
+          <span class="absolute top-2 left-2 bg-white/90 backdrop-blur text-carbon text-[10px] md:text-xs font-bold tracking-wider px-2 py-0.5 rounded-full">${f.codigo}</span>
+          <button data-accion="ampliar" data-i="${i}" class="absolute top-2 right-2 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-carbon grid place-items-center" aria-label="Ampliar ${f.codigo}">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+          </button>
+          ${sel ? '<span class="absolute bottom-2 right-2 h-7 px-2.5 rounded-full bg-lavanda text-carbon grid place-items-center text-xs font-bold">✓ Elegida</span>' : ''}
+        </div>
+        <div class="p-2.5 md:p-3">
+          <div class="flex flex-wrap gap-1 mb-1.5">
+            <span class="text-[10px] font-semibold bg-lavanda text-carbon px-2 py-0.5 rounded-full">${C.evento.deporte}</span>
+            <span class="text-[10px] text-gris border border-linea px-2 py-0.5 rounded-full">${jCorta}</span>
+          </div>
+          <p class="text-xs text-carbon/80 leading-snug min-h-[2rem]">${f.prueba || C.evento.nombre}<br><span class="text-gris">${jDia}</span></p>
+          <div class="mt-2 flex items-center gap-2">
+            <span class="text-xs font-semibold text-gris">${cop(C.precioBase)}</span>
+            <button data-accion="toggle" data-codigo="${f.codigo}" class="flex-1 rounded-full py-2 text-xs md:text-sm font-bold transition ${sel ? 'bg-niebla text-carbon border border-linea hover:border-red-300 hover:text-red-600' : 'bg-carbon text-white hover:bg-black'}">
+              ${sel ? 'Quitar' : 'Seleccionar'}
+            </button>
+          </div>
+        </div>`;
+      imgConRespaldo(card.querySelector('img'), f);
+      g.appendChild(card);
+    });
+    const restantes = visibles.length - mostrar.length;
+    $('verMas').classList.toggle('hidden', restantes <= 0);
+    $('verMas').textContent = `Ver más fotos (${restantes})`;
+    $('vacio').classList.toggle('hidden', visibles.length > 0);
+    $('resultados').textContent = `${visibles.length} foto${visibles.length !== 1 ? 's' : ''} · ${estado.jornada}`;
+    $('limpiarFiltros').classList.toggle('hidden', !(estado.jornada !== TODAS || estado.busqueda));
+  }
+
+  $('galeria').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-accion]'); if (!b) return;
+    if (b.dataset.accion === 'toggle') alternar(b.dataset.codigo);
+    if (b.dataset.accion === 'ampliar') abrirLightbox(+b.dataset.i);
+  });
+
+  function alternar(codigo) {
+    const i = estado.seleccion.indexOf(codigo);
+    const antes = calcular(estado.seleccion.length).aplica;
+    if (i >= 0) estado.seleccion.splice(i, 1); else estado.seleccion.push(codigo);
+    const ahora = calcular(estado.seleccion.length).aplica;
+    toast(!antes && ahora ? `¡${pct}% de descuento activado! 🎉` : (i >= 0 ? `${codigo} quitada` : `${codigo} agregada ✓`));
+    guardar(); pintarGaleria(); pintarCarrito(true);
+    if (!$('lightbox').classList.contains('hidden')) pintarLightbox();
+  }
+
+  /* ---------- Protección: clic derecho / arrastre ---------- */
+  document.addEventListener('contextmenu', (e) => { if (e.target.closest('img, .marca-agua')) e.preventDefault(); });
+  document.addEventListener('dragstart', (e) => { if (e.target.tagName === 'IMG') e.preventDefault(); });
+
+  /* ---------- Lightbox ---------- */
+  let lbIndice = 0;
+  function abrirLightbox(i) {
+    lbIndice = i; pintarLightbox();
+    const lb = $('lightbox'); lb.classList.remove('hidden');
+    requestAnimationFrame(() => lb.classList.remove('opacity-0'));
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarLightbox() {
+    const lb = $('lightbox'); lb.classList.add('opacity-0');
+    setTimeout(() => lb.classList.add('hidden'), 250);
+    document.body.style.overflow = '';
+  }
+  function pintarLightbox() {
+    const f = visibles[lbIndice]; if (!f) return cerrarLightbox();
+    imgConRespaldo($('lbImg'), f);
+    $('lbImg').alt = `Foto ${f.codigo}`;
+    $('lbCodigo').textContent = f.codigo;
+    $('lbInfo').textContent = `${f.jornada}${f.prueba ? ' · ' + f.prueba : ''}`;
+    const sel = seleccionada(f.codigo);
+    $('lbSel').textContent = sel ? 'Quitar de mi selección' : `Seleccionar · ${cop(C.precioBase)}`;
+    $('lbSel').className = `rounded-full px-5 py-2.5 font-bold text-sm transition ${sel ? 'bg-white/15 text-white' : 'bg-lavanda text-carbon'}`;
+    const multi = visibles.length > 1;
+    $('lbPrev').classList.toggle('hidden', !multi); $('lbNext').classList.toggle('hidden', !multi);
+  }
+  const mover = (d) => { lbIndice = (lbIndice + d + visibles.length) % visibles.length; pintarLightbox(); };
+  $('lbCerrar').onclick = cerrarLightbox;
+  $('lbPrev').onclick = () => mover(-1);
+  $('lbNext').onclick = () => mover(1);
+  $('lbSel').onclick = () => alternar(visibles[lbIndice].codigo);
+  $('lightbox').addEventListener('click', (e) => { if (e.target.id === 'lightbox') cerrarLightbox(); });
+  let toqueX = null;
+  $('lightbox').addEventListener('touchstart', (e) => { toqueX = e.touches[0].clientX; }, { passive: true });
+  $('lightbox').addEventListener('touchend', (e) => {
+    if (toqueX === null) return; const dx = e.changedTouches[0].clientX - toqueX;
+    if (Math.abs(dx) > 50) mover(dx < 0 ? 1 : -1); toqueX = null;
+  });
+  document.addEventListener('keydown', (e) => {
+    if (!$('lightbox').classList.contains('hidden')) {
+      if (e.key === 'Escape') cerrarLightbox();
+      if (e.key === 'ArrowRight') mover(1);
+      if (e.key === 'ArrowLeft') mover(-1);
+    } else if (e.key === 'Escape') cerrarDrawer();
+  });
+
+  /* ---------- Carrito ---------- */
+  function abrirDrawer() {
+    $('overlay').classList.remove('hidden');
+    requestAnimationFrame(() => $('overlay').classList.remove('opacity-0'));
+    $('drawer').classList.remove('translate-x-full');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarDrawer() {
+    $('overlay').classList.add('opacity-0');
+    setTimeout(() => $('overlay').classList.add('hidden'), 250);
+    $('drawer').classList.add('translate-x-full');
+    document.body.style.overflow = '';
+  }
+  $('btnCarritoHeader').onclick = abrirDrawer;
+  $('btnCarritoMovil').onclick = abrirDrawer;
+  $('cerrarDrawer').onclick = cerrarDrawer;
+  $('overlay').onclick = cerrarDrawer;
+  $('vaciar').onclick = () => { estado.seleccion = []; guardar(); pintarGaleria(); pintarCarrito(); };
+
+  function pintarCarrito(animar) {
+    const n = estado.seleccion.length;
+    const r = calcular(n);
+    ['contadorHeader', 'contadorMovil', 'contadorDrawer'].forEach(id => $(id).textContent = n);
+    $('totalHeader').textContent = cop(r.total);
+    $('totalMovil').textContent = cop(r.total);
+    $('dctoMovil').textContent = `−${pct}%`;
+    $('dctoMovil').classList.toggle('hidden', !r.aplica);
+    const badge = $('badgeHeader');
+    badge.textContent = n; badge.classList.toggle('hidden', n === 0);
+    if (animar && n) { badge.classList.remove('pop'); void badge.offsetWidth; badge.classList.add('pop'); }
+    $('barraMovil').classList.toggle('translate-y-full', n === 0);
+
+    $('carritoVacio').classList.toggle('hidden', n > 0);
+    $('bloqueResumen').classList.toggle('hidden', n === 0);
+    $('listaCarrito').innerHTML = estado.seleccion.map(c => {
+      const f = buscarFoto(c);
+      return `<li class="flex items-center gap-3 bg-white border border-linea rounded-2xl p-2">
+        <div class="relative w-14 h-16 rounded-xl overflow-hidden shrink-0 bg-niebla"><img data-c="${c}" class="foto-protegida w-full h-full object-cover" alt="" draggable="false"></div>
+        <div class="flex-1 min-w-0">
+          <p class="font-bold text-sm tracking-wide">${f.codigo}</p>
+          <p class="text-[11px] text-gris truncate">${f.jornada}</p>
+          <p class="text-[11px] text-gris truncate">${f.prueba || ''}</p>
+        </div>
+        <span class="text-xs font-semibold">${cop(C.precioBase)}</span>
+        <button data-quitar="${c}" class="w-8 h-8 rounded-full hover:bg-red-50 text-gris hover:text-red-600" aria-label="Quitar ${c}">×</button>
+      </li>`;
+    }).join('');
+    $('listaCarrito').querySelectorAll('img[data-c]').forEach(img => imgConRespaldo(img, buscarFoto(img.dataset.c)));
+
+    $('rDetalle').textContent = `${n} foto${n !== 1 ? 's' : ''} × ${cop(C.precioBase)}`;
+    $('rSubtotal').textContent = cop(r.subtotal);
+    if (r.aplica) {
+      $('filaDescuento').className = 'flex justify-between font-semibold items-center';
+      $('rDescLabel').innerHTML = `<span class="bg-lavanda rounded-full px-2 py-0.5 text-xs">Descuento ${pct}%</span>`;
+      $('rAhorro').textContent = '−' + cop(r.descuento);
+    } else {
+      $('filaDescuento').className = 'flex justify-between text-gris text-xs';
+      $('rDescLabel').textContent = `Descuento ${pct}% (desde ${minDcto} fotos)`;
+      $('rAhorro').textContent = cop(0);
+    }
+    $('rTotal').textContent = cop(r.total);
+    const s = sugerencia(n);
+    $('sugerencia').innerHTML = '💡 ' + s;
+    $('sugerencia').classList.toggle('hidden', !s);
+    actualizarEnlaceWa();
+  }
+  $('listaCarrito').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-quitar]'); if (b) alternar(b.dataset.quitar);
+  });
+
+  /* ---------- WhatsApp ---------- */
+  function mensajeWa() {
+    const r = calcular(estado.seleccion.length);
+    const bloques = JORNADAS.map(j => {
+      const fs = estado.seleccion.map(buscarFoto).filter(f => f && f.jornada === j);
+      if (!fs.length) return null;
+      return [`_${j}_`, ...fs.map(f => `• ${f.codigo}${f.prueba ? ' — ' + f.prueba : ''}`)].join('\n');
+    }).filter(Boolean);
+    return [
+      `Hola ${C.marca.nombre} 👋`,
+      `Quiero solicitar fotos de la *${C.evento.nombre}* (${C.evento.deporte}).`,
+      ``,
+      `👤 *Atleta / Acudiente:* ${$('nombre').value.trim()}`,
+      `🏊 *Club / Equipo:* ${$('club').value.trim()}`,
+      ``,
+      `📸 *Fotos seleccionadas (${r.n}):*`,
+      bloques.join('\n\n'),
+      ``,
+      `Subtotal: ${r.n} × ${cop(C.precioBase)} = ${cop(r.subtotal)}`,
+      r.aplica ? `Descuento ${pct}% (más de ${C.umbralFotos} fotos): −${cop(r.descuento)}` : null,
+      `💰 *TOTAL A PAGAR: ${cop(r.total)}*`,
+      ``,
+      `Realizaré el pago por *Nequi* (${C.pagos.nequi}) o *Llave* (${C.pagos.llave}) a nombre de ${C.pagos.titular} y enviaré el comprobante por este chat. ¡Gracias!`
+    ].filter(l => l !== null).join('\n');
+  }
+  function formularioValido(mostrar) {
+    let ok = true;
+    ['nombre', 'club'].forEach(id => {
+      const el = $(id), vacio = el.value.trim().length < 2;
+      if (mostrar) { el.nextElementSibling.classList.toggle('hidden', !vacio); el.classList.toggle('border-red-500', vacio); }
+      if (vacio) ok = false;
+    });
+    return ok && estado.seleccion.length > 0;
+  }
+  function actualizarEnlaceWa() {
+    const ok = formularioValido(false);
+    const a = $('btnWhatsApp');
+    a.href = ok ? `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(mensajeWa())}` : '#';
+    a.style.opacity = ok ? '1' : '.45';
+    $('avisoWa').textContent = estado.seleccion.length === 0
+      ? 'Selecciona al menos una foto para continuar.'
+      : ok ? 'Se abrirá WhatsApp con tu pedido listo. Pago por Nequi o Llave.'
+           : 'Completa nombre y club para habilitar el envío.';
+  }
+  ['nombre', 'club'].forEach(id => $(id).addEventListener('input', () => {
+    $(id).classList.remove('border-red-500'); $(id).nextElementSibling.classList.add('hidden'); actualizarEnlaceWa();
+  }));
+  $('btnWhatsApp').addEventListener('click', (e) => {
+    if (!formularioValido(true)) {
+      e.preventDefault();
+      toast(estado.seleccion.length ? 'Completa los campos obligatorios' : 'Selecciona al menos una foto');
+      if (estado.seleccion.length) $(($('nombre').value.trim().length < 2) ? 'nombre' : 'club').focus();
+    }
+  });
+  $('formPedido').addEventListener('submit', (e) => e.preventDefault());
+
+  /* ---------- Toast ---------- */
+  let tt;
+  function toast(txt) {
+    const t = $('toast'); t.textContent = txt; t.classList.remove('opacity-0');
+    clearTimeout(tt); tt = setTimeout(() => t.classList.add('opacity-0'), 1700);
+  }
+
+  /* ---------- Inicio ---------- */
+  pintarFiltros(); pintarGaleria(); pintarCarrito(); ajustarSticky();
+})();
+</script>
+</body>
+</html>
