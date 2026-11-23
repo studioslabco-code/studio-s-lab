@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STUDIO S LAB · 1ra Copa Fins Valle</title>
-<meta name="description" content="Fotos oficiales de la 1ra Copa Fins Valle de natación por STUDIO S LAB. Busca por jornada o código, elige tus fotos y solicítalas por WhatsApp.">
+<meta name="description" content="Fotos oficiales de la 1ra Copa Fins Valle (natación, aletas y atletismo) por STUDIO S LAB. Busca por disciplina o código, elige tus fotos y solicítalas por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -79,13 +79,13 @@
       <span id="etiquetaDeporte">Natación</span>
     </span>
     <h1 id="tituloEvento" class="font-serif text-4xl md:text-6xl leading-[1.05] mt-3">1ra Copa Fins Valle</h1>
-    <p class="text-gris mt-2 text-sm md:text-base max-w-2xl">Encuentra tus fotos por jornada o por código, selecciónalas y solicítalas por WhatsApp. Tras confirmar el pago recibes los archivos en alta resolución y sin marca de agua.</p>
+    <p class="text-gris mt-2 text-sm md:text-base max-w-2xl">Encuentra tus fotos por disciplina o por código, selecciónalas y solicítalas por WhatsApp. Tras confirmar el pago recibes los archivos en alta resolución y sin marca de agua.</p>
     <div id="tarifas" class="mt-5 grid grid-cols-3 gap-2 md:gap-3 max-w-2xl"></div>
   </section>
 
   <!-- ===================== FILTROS POR JORNADA ===================== -->
   <section id="barraFiltros" class="sticky z-20 bg-white/95 backdrop-blur py-3 -mx-4 px-4 border-b border-linea">
-    <div class="flex gap-2 overflow-x-auto no-scrollbar" id="filtroJornada" role="tablist" aria-label="Filtrar por jornada"></div>
+    <div class="flex gap-2 overflow-x-auto no-scrollbar" id="filtroJornada" role="tablist" aria-label="Filtrar por categoría"></div>
   </section>
 
   <div class="flex items-center justify-between mt-4 mb-3">
@@ -105,7 +105,7 @@
   </div>
   <div id="vacio" class="hidden text-center py-16 text-gris">
     <p class="font-serif text-3xl text-carbon">Sin resultados</p>
-    <p class="text-sm mt-1">Revisa el código o cambia de jornada.</p>
+    <p class="text-sm mt-1">Revisa el código o cambia de categoría.</p>
   </div>
 </main>
 
@@ -200,7 +200,7 @@
    ===================================================================== */
 const CONFIGURACION_FINS_VALLE = {
   marca: { nombre: 'STUDIO S LAB', subtitulo: 'Fotografía Deportiva' },
-  evento: { nombre: '1ra Copa Fins Valle', deporte: 'Natación' },
+  evento: { nombre: '1ra Copa Fins Valle', deporte: 'Natación · Aletas · Atletismo' },
 
   // WhatsApp: código de país + número, SIN "+", espacios ni guiones.
   whatsapp: '573000000000',
@@ -216,9 +216,9 @@ const CONFIGURACION_FINS_VALLE = {
   // ------------------------------------------------------------------
   // MODO VISTA PREVIA
   //   true  → muestra fotos de ejemplo (para que la web se vea llena hoy).
-  //   false → muestra TUS fotos de Cloudinary según las jornadas de abajo.
+  //   false → muestra TUS fotos de Cloudinary según las categorías de abajo.
   // ------------------------------------------------------------------
-  modoVistaPrevia: true,
+  modoVistaPrevia: false,
 
   // ------------------------------------------------------------------
   // CLOUDINARY
@@ -226,13 +226,13 @@ const CONFIGURACION_FINS_VALLE = {
   //   https://res.cloudinary.com/{cloudName}/image/upload/{transformacion}/{ruta}.{extension}
   //   "ruta" sale de "plantillaRuta":
   //     {carpeta}    → carpeta base (abajo)
-  //     {subcarpeta} → subcarpeta de cada jornada
+  //     {subcarpeta} → subcarpeta de cada categoría
   //     {codigo}     → código de la foto (FINS-001)
   //   Si en Cloudinary el "Public ID" de tus fotos es solo "FINS-001",
   //   cambia plantillaRuta a '{codigo}'.
   // ------------------------------------------------------------------
   cloudinary: {
-    cloudName: 'tu-cuenta',
+    cloudName: 'gjrcdxrg',
     carpeta: 'copa-fins-valle',
     plantillaRuta: '{carpeta}/{subcarpeta}/{codigo}',
     transformacion: 'c_limit,w_900,q_auto,f_auto',
@@ -240,8 +240,8 @@ const CONFIGURACION_FINS_VALLE = {
   },
 
   // ------------------------------------------------------------------
-  // JORNADAS Y FOTOS (se usan cuando modoVistaPrevia = false)
-  //   En cada jornada usa UNA de estas dos opciones:
+  // CATEGORÍAS Y FOTOS (se usan cuando modoVistaPrevia = false)
+  //   En cada categoría usa UNA de estas dos opciones:
   //     codigos: ['FINS-001', 'FINS-002', 'FINS-003']
   //     rango:   { desde: 1, hasta: 50 }   → genera FINS-001 … FINS-050
   //   Puedes usar ambas a la vez; los códigos repetidos se ignoran.
@@ -250,9 +250,11 @@ const CONFIGURACION_FINS_VALLE = {
   digitosCodigo: 3,        // 3 → FINS-001 · 4 → FINS-0001
 
   jornadas: [
-    { nombre: 'Jornada 1 - Sábado AM',  subcarpeta: 'jornada-1', rango: { desde: 1,   hasta: 50 } },
-    { nombre: 'Jornada 2 - Sábado PM',  subcarpeta: 'jornada-2', rango: { desde: 51,  hasta: 100 } },
-    { nombre: 'Jornada 3 - Domingo AM', subcarpeta: 'jornada-3', codigos: ['FINS-101', 'FINS-102', 'FINS-103'] }
+    // "subcarpeta" es la parte del Public ID en Cloudinary (no el nombre visible de la carpeta).
+    // Natación y Aletas: sus fotos conservan el prefijo 'jornada-1' (NO cambiar).
+    { nombre: 'Natación y Aletas', subcarpeta: 'jornada-1', rango: { desde: 1, hasta: 138 } },
+    // Atletismo: al subir sus fotos, continúa la numeración (ej. rango: { desde: 139, hasta: 200 }).
+    { nombre: 'Atletismo',         subcarpeta: 'atletismo', codigos: [] }
   ],
 
   // (Opcional) Texto bajo la foto: prueba, categoría o serie.
@@ -266,15 +268,15 @@ const CONFIGURACION_FINS_VALLE = {
   // FOTOS DE EJEMPLO (solo se usan cuando modoVistaPrevia = true)
   // ------------------------------------------------------------------
   fotosEjemplo: [
-    { codigo: 'FINS-001', jornada: 'Jornada 1 - Sábado AM',  prueba: '50 m Libre · Infantil A',    url: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=900&q=70' },
-    { codigo: 'FINS-002', jornada: 'Jornada 1 - Sábado AM',  prueba: '100 m Pecho · Juvenil',      url: 'https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=900&q=70' },
-    { codigo: 'FINS-003', jornada: 'Jornada 1 - Sábado AM',  prueba: '50 m Mariposa · Infantil B', url: 'https://images.unsplash.com/photo-1560090995-01632a28895b?auto=format&fit=crop&w=900&q=70' },
-    { codigo: 'FINS-004', jornada: 'Jornada 2 - Sábado PM',  prueba: '200 m Combinado · Juvenil',  url: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=900&q=70' },
-    { codigo: 'FINS-005', jornada: 'Jornada 2 - Sábado PM',  prueba: '100 m Espalda · Infantil A', url: 'https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?auto=format&fit=crop&w=900&q=70' },
-    { codigo: 'FINS-006', jornada: 'Jornada 2 - Sábado PM',  prueba: 'Relevo 4×50 Libre · Mixto',  url: 'https://images.unsplash.com/photo-1438029071396-1e831a7fa6d8?auto=format&fit=crop&w=900&q=70' },
-    { codigo: 'FINS-007', jornada: 'Jornada 3 - Domingo AM', prueba: '400 m Libre · Juvenil',      url: 'https://images.unsplash.com/photo-1622629797619-c100e3e67e2e?auto=format&fit=crop&w=900&q=70' },
-    { codigo: 'FINS-008', jornada: 'Jornada 3 - Domingo AM', prueba: '50 m Pecho · Infantil B',    url: 'https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=900&q=70' },
-    { codigo: 'FINS-009', jornada: 'Jornada 3 - Domingo AM', prueba: 'Premiación · Infantil A',    url: 'https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=900&q=70' }
+    { codigo: 'FINS-001', jornada: 'Natación y Aletas',  prueba: '50 m Libre · Infantil A',    url: 'https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-002', jornada: 'Natación y Aletas',  prueba: '100 m Pecho · Juvenil',      url: 'https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-003', jornada: 'Natación y Aletas',  prueba: '50 m Mariposa · Infantil B', url: 'https://images.unsplash.com/photo-1560090995-01632a28895b?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-004', jornada: 'Natación y Aletas',  prueba: '200 m Combinado · Juvenil',  url: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-005', jornada: 'Natación y Aletas',  prueba: '100 m Espalda · Infantil A', url: 'https://images.unsplash.com/photo-1600965962361-9035dbfd1c50?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-006', jornada: 'Natación y Aletas',  prueba: 'Relevo 4×50 Libre · Mixto',  url: 'https://images.unsplash.com/photo-1438029071396-1e831a7fa6d8?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-007', jornada: 'Atletismo', prueba: '400 m Libre · Juvenil',      url: 'https://images.unsplash.com/photo-1622629797619-c100e3e67e2e?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-008', jornada: 'Atletismo', prueba: '50 m Pecho · Infantil B',    url: 'https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=900&q=70' },
+    { codigo: 'FINS-009', jornada: 'Atletismo', prueba: 'Premiación · Infantil A',    url: 'https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=900&q=70' }
   ]
 };
 /* ======================= FIN DE CONFIGURACION ======================= */
@@ -286,7 +288,7 @@ const CONFIGURACION_FINS_VALLE = {
   const cop = (n) => '$' + Math.round(n).toLocaleString('es-CO');
   const pct = Math.round(C.porcentajeDescuento * 100);
   const minDcto = C.umbralFotos + 1;
-  const TODAS = 'Todas las jornadas';
+  const TODAS = 'Todas';
   const JORNADAS = C.jornadas.map(j => j.nombre);
 
   /* ---------- Construcción automática del catálogo ---------- */
@@ -343,7 +345,7 @@ const CONFIGURACION_FINS_VALLE = {
   /* ---------- Imagen de respaldo (si la URL no carga) ---------- */
   function respaldo(f) {
     const n = (JORNADAS.indexOf(f.jornada) + 1) || '';
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCCFF5"/><stop offset="1" stop-color="#8F7BC4"/></linearGradient></defs><rect width="600" height="800" fill="url(#g)"/><g fill="none" stroke="#fff" stroke-width="6" opacity=".45"><path d="M0 560c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/><path d="M0 620c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/><path d="M0 680c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/></g><text x="300" y="330" font-family="Georgia,serif" font-size="70" fill="#0C0C0D" text-anchor="middle">${C.evento.deporte}</text><text x="300" y="400" font-family="Arial" font-weight="700" font-size="34" fill="#0C0C0D" text-anchor="middle" opacity=".75">${f.codigo}</text><text x="300" y="450" font-family="Arial" font-size="26" fill="#0C0C0D" text-anchor="middle" opacity=".6">Jornada ${n}</text></svg>`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCCFF5"/><stop offset="1" stop-color="#8F7BC4"/></linearGradient></defs><rect width="600" height="800" fill="url(#g)"/><g fill="none" stroke="#fff" stroke-width="6" opacity=".45"><path d="M0 560c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/><path d="M0 620c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/><path d="M0 680c50 0 50-24 100-24s50 24 100 24 50-24 100-24 50 24 100 24 50-24 100-24 50 24 100 24"/></g><text x="300" y="330" font-family="Georgia,serif" font-size="70" fill="#0C0C0D" text-anchor="middle">STUDIO S LAB</text><text x="300" y="400" font-family="Arial" font-weight="700" font-size="34" fill="#0C0C0D" text-anchor="middle" opacity=".75">${f.codigo}</text><text x="300" y="450" font-family="Arial" font-size="26" fill="#0C0C0D" text-anchor="middle" opacity=".6">${f.jornada}</text></svg>`;
     return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
   }
   function imgConRespaldo(img, f) {
@@ -387,7 +389,8 @@ const CONFIGURACION_FINS_VALLE = {
 
   /* ---------- Filtro por jornada ---------- */
   function pintarFiltros() {
-    $('filtroJornada').innerHTML = [TODAS, ...JORNADAS].map(j => {
+    const conFotos = JORNADAS.filter(j => FOTOS.some(f => f.jornada === j));
+    $('filtroJornada').innerHTML = [TODAS, ...conFotos].map(j => {
       const n = j === TODAS ? FOTOS.length : FOTOS.filter(f => f.jornada === j).length;
       const act = estado.jornada === j;
       return `<button role="tab" aria-selected="${act}" data-v="${j}" class="shrink-0 rounded-full px-4 py-2 text-sm font-semibold border transition ${act ? 'bg-carbon border-carbon text-white' : 'bg-white border-linea text-carbon hover:border-carbon'}">${j} <span class="ml-1 text-xs rounded-full px-1.5 py-0.5 ${act ? 'bg-lavanda text-carbon' : 'bg-niebla text-gris'}">${n}</span></button>`;
@@ -439,8 +442,7 @@ const CONFIGURACION_FINS_VALLE = {
         </div>
         <div class="p-2.5 md:p-3">
           <div class="flex flex-wrap gap-1 mb-1.5">
-            <span class="text-[10px] font-semibold bg-lavanda text-carbon px-2 py-0.5 rounded-full">${C.evento.deporte}</span>
-            <span class="text-[10px] text-gris border border-linea px-2 py-0.5 rounded-full">${jCorta}</span>
+            <span class="text-[10px] font-semibold bg-lavanda text-carbon px-2 py-0.5 rounded-full">${f.jornada}</span>
           </div>
           <p class="text-xs text-carbon/80 leading-snug min-h-[2rem]">${f.prueba || C.evento.nombre}<br><span class="text-gris">${jDia}</span></p>
           <div class="mt-2 flex items-center gap-2">
